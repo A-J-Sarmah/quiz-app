@@ -8,7 +8,7 @@ function App() {
     <>
       <Navbar />
       <BrowserRouter>
-        <div className="container">
+        <div className="container user-select-none">
           <Route path="/" component={Form} exact />
           <Route path="/game" component={Game} exact />
         </div>

@@ -31,10 +31,17 @@ const setUp = (
   }
 };
 
-const URL = (state = { recived: false, data: [] }, action) => {
+const URL = (
+  state = { recived: false, data: [], turn: 0, correct: 0, incorrect: 0 },
+  action
+) => {
   switch (action.type) {
     case "RECIVED_DATA":
-      return { ...state, recived: true, data: action.value };
+      return {
+        ...state,
+        recived: true,
+        data: action.value,
+      };
     default:
       return { ...state };
   }
