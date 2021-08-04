@@ -1,13 +1,18 @@
 import Navbar from "./Components/Navbar";
 import Form from "./Components/Form";
+import { BrowserRouter, Route } from "react-router-dom";
+import Game from "./Components/Game";
 
 function App() {
   return (
     <>
       <Navbar />
-      <div className="container">
-        <Form />
-      </div>
+      <BrowserRouter>
+        <div className="container">
+          <Route path="/" component={Form} exact />
+          <Route path="/game" component={Game} exact />
+        </div>
+      </BrowserRouter>
     </>
   );
 }

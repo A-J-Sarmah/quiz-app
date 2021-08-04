@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 let Form = ({ dispatch }) => {
   const changeAmount = (value) => {
@@ -58,7 +59,9 @@ let Form = ({ dispatch }) => {
           <option value="hard">Hard</option>
         </select>
         <div className="button text-center">
-          <button className="btn btn-warning px-5 my-5">Start</button>
+          <Link className="btn btn-warning px-5 my-5" to="/Game">
+            Start
+          </Link>
         </div>
       </div>
     </div>
