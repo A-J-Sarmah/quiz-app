@@ -31,4 +31,13 @@ const setUp = (
   }
 };
 
-export const QUIZ_APP = combineReducers({ setUp });
+const URL = (state = { recived: false, data: [] }, action) => {
+  switch (action.type) {
+    case "RECIVED_DATA":
+      return { ...state, recived: true, data: action.value };
+    default:
+      return { ...state };
+  }
+};
+
+export const QUIZ_APP = combineReducers({ setUp, URL });

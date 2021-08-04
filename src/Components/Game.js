@@ -1,25 +1,61 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 
-function Game() {
-  return (
-    <div className="row justify-content-center mt-5">
-      <div className="col-lg-6 col-12 mt-5">
-        <p className="display-3 text-center">The Question</p>
-        <div className="options mt-5 bg-info rounded">
-          <p className="text-center display-5 fs-4 px-2">AJ</p>
-        </div>
-        <div className="options mt-2 bg-info rounded">
-          <p className="text-center display-5 fs-4 px-2">JS</p>
-        </div>
-        <div className="options mt-2 bg-info rounded">
-          <p className="text-center display-5 fs-4 px-2">DJ</p>
-        </div>
-        <div className="buttons text-center mt-5">
-          <button className="btn btn-warning px-5">Skip</button>
+let Game = ({ state, dispatch }) => {
+  useEffect(() => {
+    const URL = `https://opentdb.com/api.php?amount=${
+      state.setUp.NumberOfQuestion
+    }${state.setUp.catagory !== "" ? `&category=${state.setUp.catagory}` : ""}${
+      state.setUp.difficulty !== ""
+        ? `&difficulty=${state.setUp.difficulty}`
+        : ""
+    }&type=multiple`;
+    console.log(URL);
+    fetch(URL)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        dispatch({ type: "RECIVED_DATA", value: data.results });
+      });
+  }, []);
+  if (state.URL.recived === true) {
+    return (
+      <div className="row justify-content-center mt-5">
+        <div className="col-lg-6 col-12 mt-5">
+          <p className="display-3 text-center">The Question</p>
+          <div className="options mt-5 bg-info rounded">
+            <p className="text-center display-5 fs-4 px-2">AJ</p>
+          </div>
+          <div className="options mt-2 bg-info rounded">
+            <p className="text-center display-5 fs-4 px-2">JS</p>
+          </div>
+          <div className="options mt-2 bg-info rounded">
+            <p className="text-center display-5 fs-4 px-2">DJ</p>
+          </div>
+          <div className="buttons text-center mt-5">
+            <button className="btn btn-warning px-5">Skip</button>
+          </div>
         </div>
       </div>
-    </div>
-  );
-}
+    );
+  } else {
+    return (
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "80vh" }}
+      >
+        <div className="spinner-border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    );
+  }
+};
 
+const mapStateToProps = (state) => {
+  return { state };
+};
+
+Game = connect(mapStateToProps)(Game);
 export default Game;
