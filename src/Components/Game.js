@@ -92,7 +92,7 @@ let Game = ({ state, dispatch }) => {
     return (
       <>
         <p className="display-5 mt-5 text-center">
-          Congrats ! You answered {state.URL.incorrect} answers
+          Congrats ! You answered {state.URL.correct} answers
         </p>
         <div className="text-center">
           <Link
