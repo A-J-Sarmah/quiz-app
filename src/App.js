@@ -1,5 +1,15 @@
+import Navbar from "./Components/Navbar";
+import Form from "./Components/Form";
+
 function App() {
-  return <h1>App</h1>;
+  return (
+    <>
+      <Navbar />
+      <div className="container">
+        <Form />
+      </div>
+    </>
+  );
 }
 
 export default App;
