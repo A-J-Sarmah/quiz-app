@@ -42,6 +42,26 @@ const URL = (
         recived: true,
         data: action.value,
       };
+    case "CORRECT_ANSWER":
+      return {
+        ...state,
+        turn: parseInt(state.turn) + 1,
+        correct: state.correct + 1,
+      };
+    case "INCORRECT_ANSWER":
+      return {
+        ...state,
+        turn: parseInt(state.turn) + 1,
+        incorrect: state.incorrect + 1,
+      };
+    case "RESET":
+      return {
+        recived: false,
+        data: [],
+        turn: 0,
+        correct: 0,
+        incorrect: 0,
+      };
     default:
       return { ...state };
   }
