@@ -18,8 +18,8 @@ const setUp = (
         value = "18";
       } else if (action.value === "Politics") {
         value = "24";
-      } else if (action.value === "Art") {
-        value = "25";
+      } else if (action.value === "History") {
+        value = "23";
       } else {
         value = "";
       }

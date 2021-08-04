@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 let Form = ({ dispatch }) => {
   const changeAmount = (value) => {
-    if (parseInt(value) < 50) {
+    if (parseInt(value) < 10) {
       dispatch({ type: "NUMBER_OF_QUESTION", value });
     } else {
       dispatch({ type: "NUMBER_OF_QUESTION", value: "10" });
@@ -26,7 +26,7 @@ let Form = ({ dispatch }) => {
           name="trivia_amount"
           className="form-control"
           min="1"
-          max="50"
+          max="10"
           placeholder="10"
           onChange={(event) => {
             changeAmount(event.target.value);
@@ -44,7 +44,7 @@ let Form = ({ dispatch }) => {
           <option value="any">Any</option>
           <option value="Science:Computers">Science:Computers</option>
           <option value="Politics">Politics</option>
-          <option value="Art">Art</option>
+          <option value="History">History</option>
         </select>
         <label className="my-3">Select Difficulty:</label>
         <select

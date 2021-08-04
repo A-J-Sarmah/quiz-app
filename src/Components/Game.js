@@ -36,7 +36,8 @@ let Game = ({ state, dispatch }) => {
       state.setUp.difficulty !== ""
         ? `&difficulty=${state.setUp.difficulty}`
         : ""
-    }&type=multiple&encode=url3986`;
+    }&encode=url3986`;
+    console.log(URL);
     fetch(URL)
       .then((response) => {
         return response.json();
