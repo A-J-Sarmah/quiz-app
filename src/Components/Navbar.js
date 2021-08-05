@@ -26,7 +26,7 @@ let Navbar = ({ state, dispatch }) => {
             role="img"
             aria-label="Warning:"
           >
-            {/* <use xlink:href="#exclamation-triangle-fill" /> */}
+            <use xlinkHref="#exclamation-triangle-fill" />
           </svg>
           <div>Number of Question should be less than 10 and more than 0.</div>
         </div>
