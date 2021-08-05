@@ -6,12 +6,15 @@ const setUp = (
     catagory: "",
     difficulty: "",
     type: "multiple",
+    warning: false,
   },
   action
 ) => {
   switch (action.type) {
     case "NUMBER_OF_QUESTION":
       return { ...state, NumberOfQuestion: action.value };
+    case "WARNING":
+      return { ...state, warning: !state.warning };
     case "CATAGORY":
       let value;
       if (action.value === "Science:Computers") {

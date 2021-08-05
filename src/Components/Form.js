@@ -4,10 +4,15 @@ import { Link } from "react-router-dom";
 
 let Form = ({ dispatch }) => {
   const changeAmount = (value) => {
-    if (parseInt(value) < 10) {
+    if (value === "") {
+      dispatch({ type: "NUMBER_OF_QUESTION", value: "10" });
+    }
+    if (parseInt(value) <= 10 && parseInt(value) > 0) {
       dispatch({ type: "NUMBER_OF_QUESTION", value });
     } else {
-      dispatch({ type: "NUMBER_OF_QUESTION", value: "10" });
+      if (value !== "") {
+        dispatch({ type: "WARNING" });
+      }
     }
   };
   const changeCatagory = (value) => {
@@ -29,6 +34,7 @@ let Form = ({ dispatch }) => {
           max="10"
           placeholder="10"
           onChange={(event) => {
+            console.log(event.target.value);
             changeAmount(event.target.value);
           }}
         />
