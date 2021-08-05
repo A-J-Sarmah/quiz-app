@@ -19,7 +19,7 @@ let Game = ({ state, dispatch }) => {
     return answers;
   };
   let data;
-  if (state.URL.recived) {
+  if (state.URL.recived && state.URL.turn < state.URL.data.length) {
     data = Quiz();
   }
   const lockAnswer = (value) => {
@@ -37,7 +37,6 @@ let Game = ({ state, dispatch }) => {
         ? `&difficulty=${state.setUp.difficulty}`
         : ""
     }&encode=url3986`;
-    console.log(URL);
     fetch(URL)
       .then((response) => {
         return response.json();
@@ -46,10 +45,7 @@ let Game = ({ state, dispatch }) => {
         dispatch({ type: "RECIVED_DATA", value: data.results });
       });
   }, []);
-  if (
-    state.URL.recived === true &&
-    state.URL.turn < parseInt(state.setUp.NumberOfQuestion) - 1
-  ) {
+  if (state.URL.recived === true && state.URL.turn < state.URL.data.length) {
     return (
       <div className="row justify-content-center">
         <div className="col-lg-6 col-12 mt-5">
@@ -88,7 +84,7 @@ let Game = ({ state, dispatch }) => {
   }
   if (
     state.URL.recived === true &&
-    state.URL.turn >= parseInt(state.setUp.NumberOfQuestion) - 1
+    state.URL.turn >= parseInt(state.setUp.NumberOfQuestion)
   ) {
     return (
       <>
