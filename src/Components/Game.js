@@ -23,7 +23,7 @@ let Game = ({ state, dispatch }) => {
     data = Quiz();
   }
   const lockAnswer = (value) => {
-    if (value === state.URL.data[state.URL.turn].correct_answer) {
+    if (value === decodeURIComponent(state.URL.data[state.URL.turn].correct_answer)) {
       dispatch({ type: "CORRECT_ANSWER" });
     } else {
       dispatch({ type: "INCORRECT_ANSWER" });
